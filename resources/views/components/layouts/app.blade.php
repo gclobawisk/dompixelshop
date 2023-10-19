@@ -7,18 +7,47 @@
         <link rel="stylesheet" href="{{env('URL_BASE')}}assets_admin/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-        
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
         <link rel="stylesheet" href="{{env('URL_BASE')}}assets_admin/assets/fonts/fontawesome-all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         
         <meta name="robots" content="noindex, nofollow">
 
-        <title>{{ $title ?? 'Page Title' }}</title>
+        <title>{{ $title ?? 'DomPixelShop' }}</title>
     </head>
     
+    <script>
+        document.addEventListener('livewire:initialized', function () {
+            Livewire.on('success', function (message) {
+                $('#exampleModal').modal('hide');
+
+                var toast = new bootstrap.Toast(document.getElementById('liveToast'));
+                document.getElementById('message').textContent = message;
+
+                toast.show();
+            });
+        });        
+    </script>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header  bg-success">
+            
+            <strong class="me-auto text-white">
+                Sucesso <i class="fas fa-check text-white"></i>
+            </strong>
+            
+            <small class="text-white">agora</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p id="message" class="text-dark"></p>
+            </div>
+        </div>
+    </div>
+
     <body id="page-top">
         <div id="wrapper">
             <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-dark p-0">
@@ -76,12 +105,12 @@
             </footer>
             </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
         </div>
+
+        
         <script src="{{env('URL_BASE')}}assets_admin/assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="{{env('URL_BASE')}}assets_admin/assets/js/chart.min.js"></script>
         <script src="{{env('URL_BASE')}}assets_admin/assets/js/bs-init.js"></script>
         <script src="{{env('URL_BASE')}}assets_admin/assets/js/theme.js"></script>
-
-        <script src="{{env('URL_BASE')}}assets_admin/assets/js/retornapesquisa.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
